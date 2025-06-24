@@ -6,13 +6,18 @@
 #include "game.h"
 #include "mural.h"
 #include "display.h"
+#include "chef.h"
+#include "tripulante.h"
 
 EstadoJogo* estado_global = NULL;
 
 // Handler para CTRL+C
 void signal_handler(int sig) {
+    (void)sig; // Evitar warning de parâmetro não usado
     if (estado_global != NULL) {
         estado_global->jogo_ativo = false;
+        // Finalizar ncurses se estiver ativo
+        endwin();
         printf("\nJogo interrompido pelo usuário.\n");
     }
 }
