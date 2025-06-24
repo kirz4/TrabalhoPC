@@ -84,13 +84,27 @@ void* thread_exibir_info(void* arg) {
         
         // Cabeçalho principal
         attron(COLOR_PAIR(1) | A_BOLD);
-        mvprintw(0, (max_x - 30) / 2, "🚀 FORA NO ESPAÇO 🚀");
+        mvprintw(0, (max_x - 20) / 2, "*** FORA NO ESPACO ***");
         attroff(COLOR_PAIR(1) | A_BOLD);
         
         // Informações gerais (linha 2)
-        attron(COLOR_PAIR(7));
-        mvprintw(1, 2, " Tempo: %3ds | Completos: %2d | Tripulantes: %d ", 
-                 estado->tempo_restante, estado->pedidos_completados, estado->num_tripulantes);
+        int minutos = estado->tempo_restante / 60;
+        int segundos = estado->tempo_restante % 60;
+        
+        // Cor baseada no tempo restante
+        if (estado->tempo_restante <= 30) {
+            attron(COLOR_PAIR(4)); // Vermelho se crítico
+        } else if (estado->tempo_restante <= 60) {
+            attron(COLOR_PAIR(3)); // Amarelo se baixo
+        } else {
+            attron(COLOR_PAIR(7)); // Branco normal
+        }
+        
+        mvprintw(1, 2, " Tempo: %02d:%02d | Completos: %2d | Tripulantes: %d ", 
+                 minutos, segundos, estado->pedidos_completados, estado->num_tripulantes);
+        
+        attroff(COLOR_PAIR(4));
+        attroff(COLOR_PAIR(3));
         attroff(COLOR_PAIR(7));
         
         // === SEÇÃO DE PEDIDOS (esquerda) ===
@@ -233,7 +247,7 @@ void* thread_exibir_info(void* arg) {
         
         // Instruções na parte inferior
         attron(COLOR_PAIR(6));
-        mvprintw(max_y - 2, 2, "Comandos: [q]Sair | [1-3][h|s|p|c]Atribuir pedido | Ctrl+C para emergência");
+        mvprintw(max_y - 2, 2, "Comandos: [q]Sair | [1-3][h|s|p|c]Atribuir pedido | Ctrl+C para emergencia");
         attroff(COLOR_PAIR(6));
         
         // Atualizar tela
@@ -247,4 +261,96 @@ void* thread_exibir_info(void* arg) {
     finalizar_ncurses();
     
     return NULL;
+}
+
+// Função para mostrar tela final com ncurses
+void mostrar_tela_final(EstadoJogo* estado) {
+    // Inicializar ncurses para tela final
+    inicializar_ncurses();
+    
+    clear();
+    
+    int max_y, max_x;
+    getmaxyx(stdscr, max_y, max_x);
+    
+    // Título
+    attron(COLOR_PAIR(1) | A_BOLD);
+    mvprintw(2, (max_x - 25) / 2, "*** FORA NO ESPACO ***");
+    mvprintw(3, (max_x - 20) / 2, "RESULTADO FINAL");
+    attroff(COLOR_PAIR(1) | A_BOLD);
+    
+    // Calcular estatísticas
+    int tempo_jogado = TEMPO_JOGO - estado->tempo_restante;
+    float pedidos_por_minuto = tempo_jogado > 0 ? (estado->pedidos_completados * 60.0) / tempo_jogado : 0;
+    
+    // Determinar motivo do fim
+    const char* motivo_fim;
+    int cor_motivo;
+    if (estado->tempo_restante <= 0) {
+        motivo_fim = "*** TEMPO ESGOTADO ***";
+        cor_motivo = 3; // Amarelo
+    } else if (estado->pedidos && estado->pedidos->count >= MAX_PEDIDOS) {
+        motivo_fim = "*** SOBRECARGA DE PEDIDOS ***";
+        cor_motivo = 4; // Vermelho
+    } else {
+        motivo_fim = "*** SAIDA MANUAL ***";
+        cor_motivo = 2; // Verde
+    }
+    
+    // Motivo do fim
+    attron(COLOR_PAIR(cor_motivo) | A_BOLD);
+    mvprintw(5, (max_x - strlen(motivo_fim)) / 2, "%s", motivo_fim);
+    attroff(COLOR_PAIR(cor_motivo) | A_BOLD);
+    
+    // Estatísticas
+    attron(COLOR_PAIR(7));
+    mvprintw(7, (max_x - 30) / 2, "*** ESTATISTICAS ***");
+    
+    int minutos = tempo_jogado / 60;
+    int segundos = tempo_jogado % 60;
+    mvprintw(9, (max_x - 35) / 2, "Tempo jogado: %02d:%02d", minutos, segundos);
+    mvprintw(10, (max_x - 35) / 2, "Pedidos completados: %d", estado->pedidos_completados);
+    mvprintw(11, (max_x - 35) / 2, "Performance: %.1f pedidos/min", pedidos_por_minuto);
+    attroff(COLOR_PAIR(7));
+    
+    // Classificação
+    const char* classificacao;
+    const char* nivel;
+    int cor_classificacao;
+    
+    if (estado->pedidos_completados >= 15) {
+        classificacao = "EXCELENTE! Voces sao chefs espaciais!";
+        nivel = "*** OURO ***";
+        cor_classificacao = 3; // Amarelo (ouro)
+    } else if (estado->pedidos_completados >= 10) {
+        classificacao = "MUITO BOM! Equipe competente!";
+        nivel = "*** PRATA ***";
+        cor_classificacao = 7; // Branco (prata)
+    } else if (estado->pedidos_completados >= 5) {
+        classificacao = "BOM! Ainda ha espaco para melhorar!";
+        nivel = "*** BRONZE ***";
+        cor_classificacao = 3; // Amarelo (bronze)
+    } else {
+        classificacao = "PRECISA TREINAR! Mais coordenacao!";
+        nivel = "*** TREINO ***";
+        cor_classificacao = 4; // Vermelho
+    }
+    
+    attron(COLOR_PAIR(cor_classificacao) | A_BOLD);
+    mvprintw(13, (max_x - strlen(nivel)) / 2, "%s", nivel);
+    mvprintw(14, (max_x - strlen(classificacao)) / 2, "%s", classificacao);
+    attroff(COLOR_PAIR(cor_classificacao) | A_BOLD);
+    
+    // Instruções
+    attron(COLOR_PAIR(6));
+    mvprintw(max_y - 3, (max_x - 40) / 2, "Pressione qualquer tecla para sair...");
+    attroff(COLOR_PAIR(6));
+    
+    refresh();
+    
+    // Aguardar tecla
+    getch();
+    
+    // Finalizar ncurses
+    finalizar_ncurses();
 }

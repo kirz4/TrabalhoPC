@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <time.h>
 #include "game.h"
+#include "utils.h"
 
 // Gerar um tipo de prato aleatório
 TipoPrato gerar_tipo_aleatorio() {
@@ -24,10 +25,10 @@ int calcular_intervalo_pedidos(int num_tripulantes) {
 void* thread_mural_pedidos(void* arg) {
     EstadoJogo* estado = (EstadoJogo*)arg;
     
-    printf("[MURAL] Thread do mural iniciada\n");
+    log_debug("[MURAL] Thread do mural iniciada");
     
     int intervalo = calcular_intervalo_pedidos(estado->num_tripulantes);
-    printf("[MURAL] Gerando pedidos a cada %d segundos\n", intervalo);
+    log_debug("[MURAL] Gerando pedidos a cada %d segundos", intervalo);
     
     // Aguardar um pouco antes de começar a gerar pedidos
     sleep(3);
@@ -46,23 +47,23 @@ void* thread_mural_pedidos(void* arg) {
             if (novo_pedido != NULL) {
                 adicionar_pedido(estado->pedidos, novo_pedido);
                 
-                printf("[MURAL] Novo pedido criado: #%d - %s (Ingredientes: %ds, Cozinha: %ds)\n", 
+                log_debug("[MURAL] Novo pedido criado: #%d - %s (Ingredientes: %ds, Cozinha: %ds)", 
                        novo_pedido->id, 
                        NOMES_PRATOS[tipo],
                        novo_pedido->tempo_ingredientes,
                        novo_pedido->tempo_cozinha);
             } else {
-                printf("[MURAL] ERRO: Falha ao criar pedido\n");
+                log_debug("[MURAL] ERRO: Falha ao criar pedido");
             }
         } else {
-            printf("[MURAL] Muitos pedidos acumulados (%d), aguardando...\n", num_pedidos);
+            log_debug("[MURAL] Muitos pedidos acumulados (%d), aguardando...", num_pedidos);
         }
         
         // Aguardar antes do próximo pedido
         sleep(intervalo);
     }
     
-    printf("[MURAL] Thread do mural finalizada\n");
+    log_debug("[MURAL] Thread do mural finalizada");
     return NULL;
 }
 

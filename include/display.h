@@ -10,5 +10,6 @@ void* thread_exibir_info(void* arg);
 void inicializar_ncurses(void);
 void finalizar_ncurses(void);
 void desenhar_borda(int y, int x, int height, int width, const char* titulo);
+void mostrar_tela_final(EstadoJogo* estado);
 
 #endif // DISPLAY_H
