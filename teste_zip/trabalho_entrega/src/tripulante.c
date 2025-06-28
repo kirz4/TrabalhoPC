@@ -99,7 +99,7 @@ bool atribuir_pedido_tripulante(EstadoJogo* estado, int tripulante_id, int pedid
     
     pthread_mutex_unlock(&tripulante->mutex);
     
-    log_debug("[CHEF] Pedido #%d (%s) atribuído ao Tripulante %d na Bancada %d", 
+    printf("[CHEF] Pedido #%d (%s) atribuído ao Tripulante %d na Bancada %d\n", 
            pedido_id, NOMES_PRATOS[pedido->tipo], tripulante_id, bancada_id);
     
     return true;
@@ -124,7 +124,7 @@ void* thread_tripulante(void* arg) {
             Pedido* pedido = tripulante->pedido_atual;
             int tempo_preparo = pedido->tempo_ingredientes;
             
-            log_debug("[TRIPULANTE %d] Preparando ingredientes do pedido #%d (%s) por %ds", 
+            printf("[TRIPULANTE %d] Preparando ingredientes do pedido #%d (%s) por %ds\n", 
                    tripulante->id, pedido->id, NOMES_PRATOS[pedido->tipo], tempo_preparo);
             
             pthread_mutex_unlock(&tripulante->mutex);
@@ -144,12 +144,12 @@ void* thread_tripulante(void* arg) {
                 tripulante->cozinha_atual = cozinha_id;
                 tripulante->status = COZINHANDO;
                 
-                log_debug("[TRIPULANTE %d] Ingredientes prontos! Movendo para Cozinha %d", 
+                printf("[TRIPULANTE %d] Ingredientes prontos! Movendo para Cozinha %d\n", 
                        tripulante->id, cozinha_id);
             } else {
                 // Se não há cozinha disponível, ficar esperando
                 tripulante->status = OCUPADO;
-                log_debug("[TRIPULANTE %d] Aguardando cozinha disponível...", tripulante->id);
+                printf("[TRIPULANTE %d] Aguardando cozinha disponível...\n", tripulante->id);
             }
             
             pthread_mutex_unlock(&tripulante->mutex);
@@ -158,7 +158,7 @@ void* thread_tripulante(void* arg) {
             Pedido* pedido = tripulante->pedido_atual;
             int tempo_cozinha = pedido->tempo_cozinha;
             
-            log_debug("[TRIPULANTE %d] Cozinhando pedido #%d (%s) por %ds", 
+            printf("[TRIPULANTE %d] Cozinhando pedido #%d (%s) por %ds\n", 
                    tripulante->id, pedido->id, NOMES_PRATOS[pedido->tipo], tempo_cozinha);
             
             pthread_mutex_unlock(&tripulante->mutex);
@@ -169,7 +169,7 @@ void* thread_tripulante(void* arg) {
             pthread_mutex_lock(&tripulante->mutex);
             
             // Finalizar pedido
-            log_debug("[TRIPULANTE %d] Pedido #%d (%s) COMPLETADO!", 
+            printf("[TRIPULANTE %d] Pedido #%d (%s) COMPLETADO! 🍽️\n", 
                    tripulante->id, pedido->id, NOMES_PRATOS[pedido->tipo]);
             
             // Liberar recursos
@@ -186,14 +186,6 @@ void* thread_tripulante(void* arg) {
             // Incrementar contador de pedidos completados
             pthread_mutex_lock(&estado->mutex_global);
             estado->pedidos_completados++;
-            
-            // Verificar se atingiu a meta
-            if (estado->pedidos_completados >= estado->meta_pedidos) {
-                log_debug("[TRIPULANTE %d] META ATINGIDA! %d/%d pedidos completados!", 
-                       tripulante->id, estado->pedidos_completados, estado->meta_pedidos);
-                estado->jogo_ativo = false;
-            }
-            
             pthread_mutex_unlock(&estado->mutex_global);
             
             pthread_mutex_unlock(&tripulante->mutex);
@@ -207,7 +199,7 @@ void* thread_tripulante(void* arg) {
                 pthread_mutex_lock(&tripulante->mutex);
                 tripulante->cozinha_atual = cozinha_id;
                 tripulante->status = COZINHANDO;
-                log_debug("[TRIPULANTE %d] Cozinha %d disponível! Iniciando cozimento", 
+                printf("[TRIPULANTE %d] Cozinha %d disponível! Iniciando cozimento\n", 
                        tripulante->id, cozinha_id);
                 pthread_mutex_unlock(&tripulante->mutex);
             } else {

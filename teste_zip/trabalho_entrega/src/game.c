@@ -21,21 +21,8 @@ void inicializar_jogo(EstadoJogo* estado, int num_tripulantes) {
     
     estado->num_tripulantes = num_tripulantes;
     estado->jogo_ativo = true;
+    estado->tempo_restante = TEMPO_JOGO;
     estado->pedidos_completados = 0;
-    estado->tempo_inicio = time(NULL);
-    
-    // Definir meta baseada no número de tripulantes
-    switch (num_tripulantes) {
-        case 1: estado->meta_pedidos = META_PEDIDOS_FACIL; break;
-        case 2: estado->meta_pedidos = META_PEDIDOS_MEDIO; break;
-        case 3: estado->meta_pedidos = META_PEDIDOS_DIFICIL; break;
-        default: estado->meta_pedidos = META_PEDIDOS_MEDIO; break;
-    }
-    
-    printf("Meta de pedidos: %d (Nível: %s)\n", 
-           estado->meta_pedidos,
-           num_tripulantes == 1 ? "Fácil" : 
-           num_tripulantes == 2 ? "Médio" : "Difícil");
     
     // Inicializar mutex global
     if (pthread_mutex_init(&estado->mutex_global, NULL) != 0) {

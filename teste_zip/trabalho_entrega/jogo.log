@@ -1,0 +1,13 @@
+[09:42:00] Sistema de log iniciado
+[09:42:00] [MURAL] Thread do mural iniciada
+[09:42:00] [MURAL] Gerando pedidos a cada 6 segundos
+[09:42:03] [MURAL] Novo pedido criado: #1 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:42:09] [MURAL] Novo pedido criado: #2 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:42:15] [MURAL] Novo pedido criado: #3 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[09:42:21] [MURAL] Novo pedido criado: #4 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:42:27] [MURAL] Novo pedido criado: #5 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:42:33] [MURAL] Novo pedido criado: #6 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:42:39] [MURAL] Novo pedido criado: #7 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:42:45] [MURAL] Novo pedido criado: #8 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:42:51] [MURAL] Thread do mural finalizada
+[09:42:51] Sistema de log finalizado

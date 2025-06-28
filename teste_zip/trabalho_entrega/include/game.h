@@ -4,16 +4,13 @@
 #include <pthread.h>
 #include <ncurses.h>
 #include <stdbool.h>
-#include <time.h>
 
 // Configurações do jogo
 #define MAX_TRIPULANTES 3
 #define MAX_BANCADAS 3
 #define MAX_COZINHAS 3
 #define MAX_PEDIDOS 10
-#define META_PEDIDOS_FACIL 10    // Nível fácil
-#define META_PEDIDOS_MEDIO 20    // Nível médio  
-#define META_PEDIDOS_DIFICIL 30  // Nível difícil
+#define TEMPO_JOGO 600  // segundos
 
 // Tipos de pratos
 typedef enum {
@@ -90,9 +87,8 @@ typedef struct {
     
     // Controle do jogo
     bool jogo_ativo;
-    int meta_pedidos;          // Meta de pedidos a completar
+    int tempo_restante;
     int pedidos_completados;
-    time_t tempo_inicio;       // Para calcular tempo total
     
     // Threads
     pthread_t thread_mural;
@@ -116,11 +112,6 @@ void* thread_mural_pedidos(void* arg);
 void* thread_chef_cozinha(void* arg);
 void* thread_tripulante(void* arg);
 void* thread_exibir_info(void* arg);
-
-// Sistema de log (não interfere com ncurses)
-void inicializar_log(const char* arquivo);
-void finalizar_log(void);
-void log_debug(const char* formato, ...);
 
 // Funções auxiliares
 Pedido* criar_pedido(TipoPrato tipo);

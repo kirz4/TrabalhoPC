@@ -101,25 +101,22 @@ void* thread_exibir_info(void* arg) {
         attroff(COLOR_PAIR(1) | A_BOLD);
         
         // Informações gerais (linha 2)
-        time_t agora = time(NULL);
-        int tempo_decorrido = (int)(agora - estado->tempo_inicio);
-        int minutos = tempo_decorrido / 60;
-        int segundos = tempo_decorrido % 60;
+        int minutos = estado->tempo_restante / 60;
+        int segundos = estado->tempo_restante % 60;
         
-        // Cor baseada no progresso
-        float progresso = (float)estado->pedidos_completados / estado->meta_pedidos;
-        if (progresso >= 0.8) {
-            attron(COLOR_PAIR(2)); // Verde se quase completo
-        } else if (progresso >= 0.5) {
-            attron(COLOR_PAIR(3)); // Amarelo se no meio
+        // Cor baseada no tempo restante
+        if (estado->tempo_restante <= 30) {
+            attron(COLOR_PAIR(4)); // Vermelho se crítico
+        } else if (estado->tempo_restante <= 60) {
+            attron(COLOR_PAIR(3)); // Amarelo se baixo
         } else {
-            attron(COLOR_PAIR(7)); // Branco se começando
+            attron(COLOR_PAIR(7)); // Branco normal
         }
         
-        mvprintw(1, 2, " Tempo: %02d:%02d | Meta: %d/%d | Tripulantes: %d ", 
-                 minutos, segundos, estado->pedidos_completados, estado->meta_pedidos, estado->num_tripulantes);
+        mvprintw(1, 2, " Tempo: %02d:%02d | Completos: %2d | Tripulantes: %d ", 
+                 minutos, segundos, estado->pedidos_completados, estado->num_tripulantes);
         
-        attroff(COLOR_PAIR(2));
+        attroff(COLOR_PAIR(4));
         attroff(COLOR_PAIR(3));
         attroff(COLOR_PAIR(7));
         
@@ -335,22 +332,21 @@ void mostrar_tela_final(EstadoJogo* estado) {
     attroff(COLOR_PAIR(1) | A_BOLD);
     
     // Calcular estatísticas
-    time_t agora = time(NULL);
-    int tempo_jogado = (int)(agora - estado->tempo_inicio);
+    int tempo_jogado = TEMPO_JOGO - estado->tempo_restante;
     float pedidos_por_minuto = tempo_jogado > 0 ? (estado->pedidos_completados * 60.0) / tempo_jogado : 0;
     
     // Determinar motivo do fim
     const char* motivo_fim;
     int cor_motivo;
-    if (estado->pedidos_completados >= estado->meta_pedidos) {
-        motivo_fim = "*** MISSAO CUMPRIDA! ***";
-        cor_motivo = 2; // Verde
+    if (estado->tempo_restante <= 0) {
+        motivo_fim = "*** TEMPO ESGOTADO ***";
+        cor_motivo = 3; // Amarelo
     } else if (estado->pedidos && estado->pedidos->count >= MAX_PEDIDOS) {
         motivo_fim = "*** SOBRECARGA DE PEDIDOS ***";
         cor_motivo = 4; // Vermelho
     } else {
         motivo_fim = "*** SAIDA MANUAL ***";
-        cor_motivo = 3; // Amarelo
+        cor_motivo = 2; // Verde
     }
     
     // Motivo do fim

@@ -1,8 +1,183 @@
-[07:29:57] Sistema de log iniciado
-[07:29:57] [MURAL] Thread do mural iniciada
-[07:29:57] [MURAL] Gerando pedidos a cada 6 segundos
-[07:30:00] [MURAL] Novo pedido criado: #1 - Cafe (Ingredientes: 3s, Cozinha: 4s)
-[07:30:06] [MURAL] Novo pedido criado: #2 - Suco (Ingredientes: 2s, Cozinha: 1s)
-[07:30:12] [MURAL] Novo pedido criado: #3 - Suco (Ingredientes: 2s, Cozinha: 1s)
-[07:30:18] [MURAL] Thread do mural finalizada
-[07:30:18] Sistema de log finalizado
+[09:56:08] Sistema de log iniciado
+[09:56:08] [MURAL] Thread do mural iniciada
+[09:56:08] [MURAL] Gerando pedidos a cada 6 segundos
+[09:56:10] [CHEF] Thread do chef iniciada
+[09:56:11] [MURAL] Novo pedido criado: #1 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:56:13] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:56:13] [CHEF] Pedido #1 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:56:13] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #1 atribuído
+[09:56:14] [TRIPULANTE 0] Preparando ingredientes do pedido #1 (Hamburguer) por 5s
+[09:56:17] [MURAL] Novo pedido criado: #2 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:56:18] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:56:18] [CHEF] Pedido #2 (Pizza) atribuído ao Tripulante 1 na Bancada 1
+[09:56:18] [CHEF] Comando: T1 fazer Pizza - Pedido específico #2 atribuído
+[09:56:19] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:56:19] [TRIPULANTE 0] Cozinhando pedido #1 (Hamburguer) por 8s
+[09:56:19] [TRIPULANTE 1] Preparando ingredientes do pedido #2 (Pizza) por 7s
+[09:56:23] [MURAL] Novo pedido criado: #3 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[09:56:26] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:56:26] [TRIPULANTE 1] Cozinhando pedido #2 (Pizza) por 12s
+[09:56:27] [TRIPULANTE 0] Pedido #1 (Hamburguer) COMPLETADO!
+[09:56:28] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:56:28] [CHEF] Pedido #3 (Cafe) atribuído ao Tripulante 0 na Bancada 0
+[09:56:28] [CHEF] Comando: T0 fazer Cafe - Pedido específico #3 atribuído
+[09:56:29] [MURAL] Novo pedido criado: #4 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:56:29] [TRIPULANTE 0] Preparando ingredientes do pedido #3 (Cafe) por 3s
+[09:56:32] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:56:32] [TRIPULANTE 0] Cozinhando pedido #3 (Cafe) por 4s
+[09:56:35] [MURAL] Novo pedido criado: #5 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:56:36] [TRIPULANTE 0] Pedido #3 (Cafe) COMPLETADO!
+[09:56:38] [TRIPULANTE 1] Pedido #2 (Pizza) COMPLETADO!
+[09:56:39] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:56:39] [CHEF] Pedido #5 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:56:39] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #5 atribuído
+[09:56:40] [TRIPULANTE 0] Preparando ingredientes do pedido #5 (Hamburguer) por 5s
+[09:56:40] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:56:40] [CHEF] Pedido #4 (Pizza) atribuído ao Tripulante 1 na Bancada 1
+[09:56:40] [CHEF] Comando: T1 fazer Pizza - Pedido específico #4 atribuído
+[09:56:41] [MURAL] Novo pedido criado: #6 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:56:41] [TRIPULANTE 1] Preparando ingredientes do pedido #4 (Pizza) por 7s
+[09:56:45] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:56:45] [TRIPULANTE 0] Cozinhando pedido #5 (Hamburguer) por 8s
+[09:56:47] [MURAL] Novo pedido criado: #7 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:56:48] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:56:48] [TRIPULANTE 1] Cozinhando pedido #4 (Pizza) por 12s
+[09:56:53] [MURAL] Novo pedido criado: #8 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:56:53] [TRIPULANTE 0] Pedido #5 (Hamburguer) COMPLETADO!
+[09:56:56] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:56:56] [CHEF] Pedido #6 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:56:56] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #6 atribuído
+[09:56:57] [TRIPULANTE 0] Preparando ingredientes do pedido #6 (Hamburguer) por 5s
+[09:56:59] [MURAL] Novo pedido criado: #9 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[09:57:00] [TRIPULANTE 1] Pedido #4 (Pizza) COMPLETADO!
+[09:57:02] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:57:02] [TRIPULANTE 0] Cozinhando pedido #6 (Hamburguer) por 8s
+[09:57:05] [MURAL] Novo pedido criado: #10 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:57:08] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:57:08] [CHEF] Pedido #9 (Cafe) atribuído ao Tripulante 1 na Bancada 0
+[09:57:08] [CHEF] Comando: T1 fazer Cafe - Pedido específico #9 atribuído
+[09:57:08] [TRIPULANTE 1] Preparando ingredientes do pedido #9 (Cafe) por 3s
+[09:57:10] [TRIPULANTE 0] Pedido #6 (Hamburguer) COMPLETADO!
+[09:57:11] [MURAL] Novo pedido criado: #11 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:57:11] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 0
+[09:57:11] [TRIPULANTE 1] Cozinhando pedido #9 (Cafe) por 4s
+[09:57:12] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:57:12] [CHEF] Pedido #11 (Suco) atribuído ao Tripulante 0 na Bancada 0
+[09:57:12] [CHEF] Comando: T0 fazer Suco - Pedido específico #11 atribuído
+[09:57:13] [TRIPULANTE 0] Preparando ingredientes do pedido #11 (Suco) por 2s
+[09:57:15] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 1
+[09:57:15] [TRIPULANTE 0] Cozinhando pedido #11 (Suco) por 1s
+[09:57:15] [TRIPULANTE 1] Pedido #9 (Cafe) COMPLETADO!
+[09:57:16] [TRIPULANTE 0] Pedido #11 (Suco) COMPLETADO!
+[09:57:17] [MURAL] Novo pedido criado: #12 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[09:57:17] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:57:17] [CHEF] Pedido #7 (Pizza) atribuído ao Tripulante 0 na Bancada 0
+[09:57:17] [CHEF] Comando: T0 fazer Pizza - Pedido específico #7 atribuído
+[09:57:18] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:57:18] [CHEF] Pedido #8 (Pizza) atribuído ao Tripulante 1 na Bancada 1
+[09:57:18] [CHEF] Comando: T1 fazer Pizza - Pedido específico #8 atribuído
+[09:57:18] [TRIPULANTE 0] Preparando ingredientes do pedido #7 (Pizza) por 7s
+[09:57:18] [TRIPULANTE 1] Preparando ingredientes do pedido #8 (Pizza) por 7s
+[09:57:23] [MURAL] Novo pedido criado: #13 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[09:57:25] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:57:25] [TRIPULANTE 0] Cozinhando pedido #7 (Pizza) por 12s
+[09:57:25] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:57:25] [TRIPULANTE 1] Cozinhando pedido #8 (Pizza) por 12s
+[09:57:29] [MURAL] Novo pedido criado: #14 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:57:35] [MURAL] Novo pedido criado: #15 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:57:37] [TRIPULANTE 0] Pedido #7 (Pizza) COMPLETADO!
+[09:57:37] [TRIPULANTE 1] Pedido #8 (Pizza) COMPLETADO!
+[09:57:38] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:57:38] [CHEF] Pedido #12 (Cafe) atribuído ao Tripulante 0 na Bancada 0
+[09:57:38] [CHEF] Comando: T0 fazer Cafe - Pedido específico #12 atribuído
+[09:57:39] [TRIPULANTE 0] Preparando ingredientes do pedido #12 (Cafe) por 3s
+[09:57:39] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:57:39] [CHEF] Pedido #13 (Cafe) atribuído ao Tripulante 1 na Bancada 1
+[09:57:39] [CHEF] Comando: T1 fazer Cafe - Pedido específico #13 atribuído
+[09:57:40] [TRIPULANTE 1] Preparando ingredientes do pedido #13 (Cafe) por 3s
+[09:57:41] [MURAL] Novo pedido criado: #16 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:57:42] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:57:42] [TRIPULANTE 0] Cozinhando pedido #12 (Cafe) por 4s
+[09:57:43] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:57:43] [TRIPULANTE 1] Cozinhando pedido #13 (Cafe) por 4s
+[09:57:46] [TRIPULANTE 0] Pedido #12 (Cafe) COMPLETADO!
+[09:57:47] [MURAL] Novo pedido criado: #17 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:57:47] [TRIPULANTE 1] Pedido #13 (Cafe) COMPLETADO!
+[09:57:53] [MURAL] Novo pedido criado: #18 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:57:59] [MURAL] Novo pedido criado: #19 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:57:59] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:57:59] [CHEF] Pedido #16 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:57:59] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #16 atribuído
+[09:58:00] [TRIPULANTE 0] Preparando ingredientes do pedido #16 (Hamburguer) por 5s
+[09:58:00] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:58:00] [CHEF] Pedido #17 (Hamburguer) atribuído ao Tripulante 1 na Bancada 1
+[09:58:00] [CHEF] Comando: T1 fazer Hamburguer - Pedido específico #17 atribuído
+[09:58:01] [TRIPULANTE 1] Preparando ingredientes do pedido #17 (Hamburguer) por 5s
+[09:58:05] [MURAL] Novo pedido criado: #20 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:58:05] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:05] [TRIPULANTE 0] Cozinhando pedido #16 (Hamburguer) por 8s
+[09:58:06] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:58:06] [TRIPULANTE 1] Cozinhando pedido #17 (Hamburguer) por 8s
+[09:58:11] [MURAL] Novo pedido criado: #21 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:58:13] [TRIPULANTE 0] Pedido #16 (Hamburguer) COMPLETADO!
+[09:58:14] [TRIPULANTE 1] Pedido #17 (Hamburguer) COMPLETADO!
+[09:58:15] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:58:16] [CHEF] Pedido #20 (Suco) atribuído ao Tripulante 0 na Bancada 0
+[09:58:16] [CHEF] Comando: T0 fazer Suco - Pedido específico #20 atribuído
+[09:58:16] [TRIPULANTE 0] Preparando ingredientes do pedido #20 (Suco) por 2s
+[09:58:17] [MURAL] Novo pedido criado: #22 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:58:17] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:58:17] [CHEF] Pedido #21 (Suco) atribuído ao Tripulante 1 na Bancada 1
+[09:58:17] [CHEF] Comando: T1 fazer Suco - Pedido específico #21 atribuído
+[09:58:18] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:18] [TRIPULANTE 0] Cozinhando pedido #20 (Suco) por 1s
+[09:58:18] [TRIPULANTE 1] Preparando ingredientes do pedido #21 (Suco) por 2s
+[09:58:19] [TRIPULANTE 0] Pedido #20 (Suco) COMPLETADO!
+[09:58:20] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:20] [TRIPULANTE 1] Cozinhando pedido #21 (Suco) por 1s
+[09:58:21] [TRIPULANTE 1] Pedido #21 (Suco) COMPLETADO!
+[09:58:23] [MURAL] Novo pedido criado: #23 - Pizza (Ingredientes: 7s, Cozinha: 12s)
+[09:58:24] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:58:26] [CHEF] Pedido #18 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:58:26] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #18 atribuído
+[09:58:26] [TRIPULANTE 0] Preparando ingredientes do pedido #18 (Hamburguer) por 5s
+[09:58:28] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:58:28] [CHEF] Pedido #10 (Pizza) atribuído ao Tripulante 1 na Bancada 1
+[09:58:28] [CHEF] Comando: T1 fazer Pizza - Pedido específico #10 atribuído
+[09:58:29] [MURAL] Novo pedido criado: #24 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:58:29] [TRIPULANTE 1] Preparando ingredientes do pedido #10 (Pizza) por 7s
+[09:58:31] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:31] [TRIPULANTE 0] Cozinhando pedido #18 (Hamburguer) por 8s
+[09:58:35] [MURAL] Novo pedido criado: #25 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:58:36] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 1
+[09:58:36] [TRIPULANTE 1] Cozinhando pedido #10 (Pizza) por 12s
+[09:58:38] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:58:38] [CHEF] Comando falhou: T0 não pode fazer 's' agora
+[09:58:38] [CHEF] Motivos possíveis: tripulante ocupado, sem pedidos, sem bancada
+[09:58:39] [TRIPULANTE 0] Pedido #18 (Hamburguer) COMPLETADO!
+[09:58:40] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:58:40] [CHEF] Pedido #25 (Suco) atribuído ao Tripulante 0 na Bancada 0
+[09:58:40] [CHEF] Comando: T0 fazer Suco - Pedido específico #25 atribuído
+[09:58:41] [MURAL] Novo pedido criado: #26 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:58:41] [TRIPULANTE 0] Preparando ingredientes do pedido #25 (Suco) por 2s
+[09:58:43] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:43] [TRIPULANTE 0] Cozinhando pedido #25 (Suco) por 1s
+[09:58:44] [TRIPULANTE 0] Pedido #25 (Suco) COMPLETADO!
+[09:58:47] [MURAL] Novo pedido criado: #27 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[09:58:48] [TRIPULANTE 1] Pedido #10 (Pizza) COMPLETADO!
+[09:58:51] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[09:58:52] [CHEF] Pedido #24 (Hamburguer) atribuído ao Tripulante 0 na Bancada 0
+[09:58:52] [CHEF] Comando: T0 fazer Hamburguer - Pedido específico #24 atribuído
+[09:58:53] [MURAL] Novo pedido criado: #28 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[09:58:53] [CHEF] Tripulante 2 selecionado, aguardando tipo de prato...
+[09:58:53] [TRIPULANTE 0] Preparando ingredientes do pedido #24 (Hamburguer) por 5s
+[09:58:53] [CHEF] Pedido #27 (Suco) atribuído ao Tripulante 1 na Bancada 1
+[09:58:53] [CHEF] Comando: T1 fazer Suco - Pedido específico #27 atribuído
+[09:58:54] [TRIPULANTE 1] Preparando ingredientes do pedido #27 (Suco) por 2s
+[09:58:56] [TRIPULANTE 1] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:56] [TRIPULANTE 1] Cozinhando pedido #27 (Suco) por 1s
+[09:58:57] [TRIPULANTE 1] Pedido #27 (Suco) COMPLETADO!
+[09:58:57] [TRIPULANTE 1] META ATINGIDA! 20/20 pedidos completados!
+[09:58:57] [CHEF] Thread do chef finalizada
+[09:58:58] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[09:58:58] Sistema de log finalizado

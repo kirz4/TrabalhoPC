@@ -74,7 +74,7 @@ bool processar_comando(EstadoJogo* estado, int tripulante_id, char tipo_prato) {
         // Atribuir pedido específico
         bool sucesso = atribuir_pedido_tripulante(estado, tripulante_id, pedido_especifico->id);
         if (sucesso) {
-            log_debug("[CHEF] Comando: T%d fazer %s - Pedido específico #%d atribuído", 
+            printf("[CHEF] Comando: T%d fazer %s - Pedido específico #%d atribuído\n", 
                    tripulante_id, nome_comando, pedido_especifico->id);
             return true;
         }
@@ -85,7 +85,7 @@ bool processar_comando(EstadoJogo* estado, int tripulante_id, char tipo_prato) {
     if (primeiro != NULL) {
         bool sucesso = atribuir_pedido_tripulante(estado, tripulante_id, primeiro->id);
         if (sucesso) {
-            log_debug("[CHEF] Comando: T%d fazer %s - Primeiro pedido #%d (%s) atribuído", 
+            printf("[CHEF] Comando: T%d fazer %s - Primeiro pedido #%d (%s) atribuído\n", 
                    tripulante_id, nome_comando, primeiro->id, NOMES_PRATOS[primeiro->tipo]);
             return true;
         }
@@ -98,7 +98,10 @@ bool processar_comando(EstadoJogo* estado, int tripulante_id, char tipo_prato) {
 void* thread_chef_cozinha(void* arg) {
     EstadoJogo* estado = (EstadoJogo*)arg;
     
-    log_debug("[CHEF] Thread do chef iniciada");
+    printf("[CHEF] Thread do chef iniciada\n");
+    printf("[CHEF] Comandos disponíveis:\n");
+    printf("[CHEF]   [1-3][h|s|p|c] - Tripulante fazer prato (h=Hamburguer, s=Suco, p=Pizza, c=Cafe)\n");
+    printf("[CHEF]   q - Sair do jogo\n");
     
     char ultimo_comando = 0;
     char comando_atual = 0;
@@ -109,7 +112,7 @@ void* thread_chef_cozinha(void* arg) {
         
         if (tecla != ERR) {
             if (tecla == 'q' || tecla == 'Q') {
-                log_debug("[CHEF] Comando de saída recebido");
+                printf("[CHEF] Comando de saída recebido\n");
                 estado->jogo_ativo = false;
                 break;
             }
@@ -119,7 +122,7 @@ void* thread_chef_cozinha(void* arg) {
                 // Primeiro caractere do comando
                 if (tecla >= '1' && tecla <= '3') {
                     ultimo_comando = tecla;
-                    log_debug("[CHEF] Tripulante %c selecionado, aguardando tipo de prato...", tecla);
+                    printf("[CHEF] Tripulante %c selecionado, aguardando tipo de prato...\n", tecla);
                 }
             } else {
                 // Segundo caractere do comando  
@@ -132,12 +135,12 @@ void* thread_chef_cozinha(void* arg) {
                     bool sucesso = processar_comando(estado, tripulante_id, comando_atual);
                     
                     if (!sucesso) {
-                        log_debug("[CHEF] Comando falhou: T%d não pode fazer '%c' agora", 
+                        printf("[CHEF] Comando falhou: T%d não pode fazer '%c' agora\n", 
                                tripulante_id, comando_atual);
-                        log_debug("[CHEF] Motivos possíveis: tripulante ocupado, sem pedidos, sem bancada");
+                        printf("[CHEF] Motivos possíveis: tripulante ocupado, sem pedidos, sem bancada\n");
                     }
                 } else {
-                    log_debug("[CHEF] Tripulante inválido: %d (máximo: %d)", 
+                    printf("[CHEF] Tripulante inválido: %d (máximo: %d)\n", 
                            tripulante_id, estado->num_tripulantes - 1);
                 }
                 
@@ -151,6 +154,6 @@ void* thread_chef_cozinha(void* arg) {
         usleep(100000); // 0.1 segundos
     }
     
-    log_debug("[CHEF] Thread do chef finalizada");
+    printf("[CHEF] Thread do chef finalizada\n");
     return NULL;
 }

@@ -1,0 +1,26 @@
+[10:02:47] Sistema de log iniciado
+[10:02:47] [MURAL] Thread do mural iniciada
+[10:02:47] [MURAL] Gerando pedidos a cada 8 segundos
+[10:02:49] [CHEF] Thread do chef iniciada
+[10:02:50] [MURAL] Novo pedido criado: #1 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[10:02:51] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[10:02:51] [CHEF] Pedido #1 (Suco) atribuído ao Tripulante 0 na Bancada 0
+[10:02:51] [CHEF] Comando: T0 fazer Suco - Pedido específico #1 atribuído
+[10:02:52] [TRIPULANTE 0] Preparando ingredientes do pedido #1 (Suco) por 2s
+[10:02:54] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[10:02:54] [TRIPULANTE 0] Cozinhando pedido #1 (Suco) por 1s
+[10:02:55] [TRIPULANTE 0] Pedido #1 (Suco) COMPLETADO!
+[10:02:58] [MURAL] Novo pedido criado: #2 - Suco (Ingredientes: 2s, Cozinha: 1s)
+[10:02:58] [CHEF] Tripulante 1 selecionado, aguardando tipo de prato...
+[10:02:58] [CHEF] Pedido #2 (Suco) atribuído ao Tripulante 0 na Bancada 0
+[10:02:58] [CHEF] Comando: T0 fazer Suco - Pedido específico #2 atribuído
+[10:02:59] [TRIPULANTE 0] Preparando ingredientes do pedido #2 (Suco) por 2s
+[10:03:01] [TRIPULANTE 0] Ingredientes prontos! Movendo para Cozinha 0
+[10:03:01] [TRIPULANTE 0] Cozinhando pedido #2 (Suco) por 1s
+[10:03:02] [TRIPULANTE 0] Pedido #2 (Suco) COMPLETADO!
+[10:03:06] [MURAL] Novo pedido criado: #3 - Hamburguer (Ingredientes: 5s, Cozinha: 8s)
+[10:03:14] [MURAL] Novo pedido criado: #4 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[10:03:22] [MURAL] Novo pedido criado: #5 - Cafe (Ingredientes: 3s, Cozinha: 4s)
+[10:03:24] [CHEF] Comando de saída recebido
+[10:03:24] [CHEF] Thread do chef finalizada
+[10:03:25] Sistema de log finalizado
