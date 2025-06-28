@@ -6,6 +6,7 @@
 **Disciplina:** Programação Concorrente  
 **Professor:** Jeremias Moreira Gomes  
 **Período:** 2025/1  
+**Alunos:** Lucas Rabello Peixoto Cruz, Matheus Cordeiro Umbelino Lobo
 
 ---
 
