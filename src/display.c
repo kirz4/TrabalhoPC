@@ -245,6 +245,32 @@ void* thread_exibir_info(void* arg) {
             pthread_mutex_unlock(&estado->cozinhas[i].mutex);
         }
         
+        // Seção de comandos
+        int comandos_y = recursos_y + 5;
+        attron(COLOR_PAIR(6) | A_BOLD);
+        mvprintw(comandos_y, status_x + 2, "COMANDOS:");
+        attroff(COLOR_PAIR(6) | A_BOLD);
+        
+        attron(COLOR_PAIR(7));
+        mvprintw(comandos_y + 1, status_x + 2, "Digite: [T][P]");
+        mvprintw(comandos_y + 2, status_x + 2, "T = Tripulante (1-%d)", estado->num_tripulantes);
+        mvprintw(comandos_y + 3, status_x + 2, "P = Prato:");
+        attroff(COLOR_PAIR(7));
+        
+        attron(COLOR_PAIR(3));
+        mvprintw(comandos_y + 4, status_x + 4, "h = Hamburguer (5s+8s)");
+        mvprintw(comandos_y + 5, status_x + 4, "s = Suco       (2s+1s)");
+        mvprintw(comandos_y + 6, status_x + 4, "p = Pizza      (7s+12s)");
+        mvprintw(comandos_y + 7, status_x + 4, "c = Cafe       (3s+4s)");
+        attroff(COLOR_PAIR(3));
+        
+        attron(COLOR_PAIR(6));
+        mvprintw(comandos_y + 9, status_x + 2, "Exemplos:");
+        mvprintw(comandos_y + 10, status_x + 4, "1h = T1 fazer Hamburguer");
+        mvprintw(comandos_y + 11, status_x + 4, "2s = T2 fazer Suco");
+        mvprintw(comandos_y + 12, status_x + 4, "q  = Sair do jogo");
+        attroff(COLOR_PAIR(6));
+        
         // Instruções na parte inferior
         attron(COLOR_PAIR(6));
         mvprintw(max_y - 2, 2, "Comandos: [q]Sair | [1-3][h|s|p|c]Atribuir pedido | Ctrl+C para emergencia");
